@@ -23,7 +23,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
 
     private EventsStorage mEventsStorage;
     private List<Event> mEvents;
-    private static String TAG = "EventAdapter";
+    private static final String TAG = "EventAdapter";
 
     public EventAdapter(EventsStorage storage) {
         mEvents = new ArrayList<>();

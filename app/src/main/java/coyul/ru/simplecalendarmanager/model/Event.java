@@ -78,6 +78,40 @@ public class Event {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        if (getId() != event.getId()) return false;
+        if (getCalendarId() != event.getCalendarId()) return false;
+        if (getStart() != event.getStart()) return false;
+        if (getEnd() != event.getEnd()) return false;
+        if (getTitle() != null ? !getTitle().equals(event.getTitle()) : event.getTitle() != null)
+            return false;
+        if (getDescription() != null ? !getDescription().equals(event.getDescription()) : event.getDescription() != null)
+            return false;
+        if (getLocation() != null ? !getLocation().equals(event.getLocation()) : event.getLocation() != null)
+            return false;
+        return getTimeZone() != null ? getTimeZone().equals(event.getTimeZone()) : event.getTimeZone() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (getId() ^ (getId() >>> 32));
+        result = 31 * result + (int) (getCalendarId() ^ (getCalendarId() >>> 32));
+        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + (getLocation() != null ? getLocation().hashCode() : 0);
+        result = 31 * result + (int) (getStart() ^ (getStart() >>> 32));
+        result = 31 * result + (int) (getEnd() ^ (getEnd() >>> 32));
+        result = 31 * result + (getTimeZone() != null ? getTimeZone().hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Event{");
         sb.append("mId=").append(mId);

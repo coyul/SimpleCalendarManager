@@ -4,7 +4,7 @@ import android.app.Application;
 
 import coyul.ru.simplecalendarmanager.helpers.EventDBHelper;
 
-public class EventApplication extends Application {
+public class EventApplication extends Application implements EventsStorageProvider {
 
     private EventsStorage mEventsStorage;
 
@@ -15,6 +15,7 @@ public class EventApplication extends Application {
         mEventsStorage = new EventsStorage(dbHelper);
     }
 
+    @Override
     public EventsStorage getEventsStorage() {
         return mEventsStorage;
     }
